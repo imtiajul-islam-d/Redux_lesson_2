@@ -1,12 +1,12 @@
 import { DECREMENT, INCREMENT } from "./actionTypes";
 
-export const incrementCounter = (value) => {
+export const incrementCounter = () => {
   return {
     type: INCREMENT,
   };
 };
 
-export const decrementCounter = (value) => {
+export const decrementCounter = () => {
   return {
     type: DECREMENT,
   };

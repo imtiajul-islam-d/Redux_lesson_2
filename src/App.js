@@ -1,5 +1,6 @@
 import { Provider } from "react-redux";
 import Counter from "./components/Counter";
+import DynamicCounter from "./components/dynamicCounter";
 import store from "./redux/store";
 
 export default function App() {
@@ -12,8 +13,7 @@ export default function App() {
 
         <div className="max-w-md mx-auto mt-10 space-y-5">
           <Counter />
-          <Counter />
-          <Counter />
+          <DynamicCounter></DynamicCounter>
         </div>
       </div>
     </Provider>

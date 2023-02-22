@@ -1,5 +1,8 @@
-import { connect, useDispatch, useSelector } from "react-redux";
-import { decrementCounter, incrementCounter } from "../redux/counter/action";
+import { connect } from "react-redux";
+import {
+  dynamicDecrementCounter,
+  dynamicIncrementCounter,
+} from "../redux/dynamicCounter/dynamicAction";
 
 function Counter({ count, increment, decrement }) {
   return (
@@ -8,13 +11,13 @@ function Counter({ count, increment, decrement }) {
       <div className="flex space-x-3">
         <button
           className="bg-indigo-400 text-white px-3 py-2 rounded shadow"
-          onClick={() => increment()}
+          onClick={() => increment(3)}
         >
           Increment
         </button>
         <button
           className="bg-red-400 text-white px-3 py-2 rounded shadow"
-          onClick={() => decrement()}
+          onClick={() => decrement(3)}
         >
           Decrement
         </button>
@@ -26,14 +29,14 @@ function Counter({ count, increment, decrement }) {
 const mapStateToProps = (state, ownProps) => {
   // if needed you can use ownProps
   return {
-    count: state.counter.value,
+    count: state.dynamicCounter.value,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    increment: () => dispatch(incrementCounter()),
-    decrement: () => dispatch(decrementCounter()),
+    increment: (value) => dispatch(dynamicIncrementCounter(value)),
+    decrement: (value) => dispatch(dynamicDecrementCounter(value)),
   };
 };
 
