@@ -1,13 +1,11 @@
+import { composeWithDevTools } from "@redux-devtools/extension";
 import { applyMiddleware, createStore } from "redux";
+import myLogger from "./middlewares/myLogger";
 import rootReducer from "./rootReducer";
 
-// myLogger Middleware
-const myLogger = (store) => (next) => (action) => {
-  console.log("Action:", JSON.stringify(action));
-  console.log("Previous State:", store.getState());
-  const upComingState = [action].reduce(rootReducer, store.getState());
-  console.log("Upcoming State:", JSON.stringify(upComingState));
-  next(action)
-};
-const store = createStore(rootReducer, applyMiddleware(myLogger));
+const store = createStore(
+  rootReducer,
+  composeWithDevTools(applyMiddleware(myLogger))
+);
+console.log(store.getState());
 export default store;
